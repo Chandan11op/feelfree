@@ -7,30 +7,19 @@ import { fileURLToPath } from "url";
 
 dotenv.config();
 const app = express();
+
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Static frontend serving
+// Get current directory for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// ✅ Serve the public folder (frontend)
 app.use(express.static(path.join(__dirname, "../public")));
 
-// MongoDB connect
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB connected"))
-  .catch((err) => console.error("❌ MongoDB error:", err));
-
-// Example routes
-import noteRoutes from "./routes/noteRoutes.js";
-import chatRoutes from "./routes/chatRoutes.js";
-import expenseRoutes from "./routes/expenseRoutes.js";
-import eventRoutes from "./routes/eventRoutes.js";
-
-app.use("/api/notes", noteRoutes);
-app.use("/api/chat", chatRoutes);
-app.use("/api/expenses", expenseRoutes);
-app.use("/api/events", eventRoutes);
-
-// Start server
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+// ✅ Handle root route explicitly (so it serves index.html)
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/index.html"));
+});

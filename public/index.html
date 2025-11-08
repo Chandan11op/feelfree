@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FeelFree</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <h1>FeelFree</h1>
+    <button onclick="showSection('notes')">Notes</button>
+    <button onclick="showSection('chat')">Buddy</button>
+    <button onclick="showSection('tracker')">Tracker</button>
+    <button onclick="showSection('events')">Events</button>
+  </nav>
+
+  <main>
+    <section id="notes" class="active">
+      <h2>Notes</h2>
+      <textarea id="noteInput" placeholder="Write something..."></textarea>
+      <button onclick="saveNote()">Save</button>
+      <div id="noteList"></div>
+    </section>
+
+    <section id="chat">
+      <h2>Buddy Chat</h2>
+      <div id="chatBox"></div>
+      <input id="chatInput" placeholder="Type here..." />
+      <button onclick="sendMessage()">Send</button>
+    </section>
+
+    <section id="tracker">
+      <h2>Tracker</h2>
+      <input id="desc" placeholder="Description" />
+      <input id="amount" type="number" placeholder="Amount" />
+      <select id="type">
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+      <button onclick="addTransaction()">Add</button>
+      <div id="transactions"></div>
+    </section>
+
+    <section id="events">
+      <h2>Events</h2>
+      <input id="eventTitle" placeholder="Event Title" />
+      <input id="eventDate" type="date" />
+      <button onclick="addEvent()">Add</button>
+      <div id="eventList"></div>
+    </section>
+  </main>
+
+  <footer>© 2025 FeelFree by Chandan</footer>
+  <script src="script.js"></script>
+</body>
+</html>

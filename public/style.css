@@ -1,0 +1,20 @@
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  background-color: #fdfdfd;
+  color: #000b04;
+}
+nav {
+  background-color: #95aca9;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+main { padding: 2rem; }
+section { display: none; }
+section.active { display: block; }
+textarea, input, select { width: 100%; max-width: 400px; margin: 5px 0; padding: 0.5rem; }
+button { background: #8da6a3; color: white; border: none; padding: 0.5rem 1rem; cursor: pointer; border-radius: 4px; }
+button:hover { background: #86a29e; }
